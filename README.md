@@ -1,24 +1,53 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Blog app Project
 
-Things you may want to cover:
+> In this project, i create all controllers and views for your Blog app and add simple placeholders for your views with plain HTML.
 
-* Ruby version
 
-* System dependencies
+## Built With
 
-* Configuration
+- Ruby
+- Ruby on Rails
+- SQL
+- VScode
+- Git & GitHub
 
-* Database creation
+## Getting Started
 
-* Database initialization
+To get a local copy up and running follow these simple example steps.
 
-* How to run the test suite
+- Open your command line
 
-* Services (job queues, cache servers, search engines, etc.)
+- Go to the directory where you want this project to be cloned into
 
-* Deployment instructions
+- Run this command:
+  `git clone https://github.com/miguelesco/blog-app`
 
-* ...
+- cd into the directory
+
+## Authors
+
+👤 **Miguelangel Escorche**
+
+- GitHub: [miguelesco](https://github.com/miguelesco)
+- Twitter: [@miguelescorched](https://twitter.com/miguelescorched)
+- LinkedIn: [Miguelangel Escorche](https://www.linkedin.com/in/miguelangel-escorche)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
