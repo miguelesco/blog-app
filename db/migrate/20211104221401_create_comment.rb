@@ -1,11 +1,9 @@
 class CreateComment < ActiveRecord::Migration[6.1]
   def change
     create_table :comments do |t|
-      t.integer :author_id
+      t.references :author, null: false, foreign_key: { to_table: :users }
       t.integer :post_id
       t.text :text
-      t.datetime :updated_at
-      t.datetime :created_at
 
       t.timestamps
     end
