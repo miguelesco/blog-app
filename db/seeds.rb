@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+users = [
+  {
+    name: 'Juan',
+    photo: 'sasbasja.jpg',
+    bio: 'Soy juan',
+    posts_counter: 0,
+  },
+  {
+    name: 'Carlos',
+    photo: 'sasbasja.jpg',
+    bio: 'Soy Carlos',
+    posts_counter: 0,
+  },
+  {
+    name: 'Tyler',
+    photo: 'sasbasja.jpg',
+    bio: 'Soy Tyler',
+    posts_counter: 0,
+  },
+]
+
+User.create(users.map { |user| user })
