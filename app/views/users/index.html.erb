@@ -1,2 +1,8 @@
-<h1>Here is the list of all the users and posts</h1>
-<p><%= @users %></p>
+<% @users.each do |user| %>
+  <%= render partial: "shared/userbar", locals: {
+    photo: user.photo,
+    username: user.name,
+    post_number: user.posts_counter
+  } 
+  %>
+<% end %>

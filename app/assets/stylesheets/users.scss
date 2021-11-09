@@ -1,3 +1,45 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.user {
+  width: 100vw;
+  height: 200px;
+  display: flex;
+  justify-content:  space-between;
+  box-sizing: border-box;
+  padding: 10px;
+  .photo {
+    width: 200px;
+    height: 100%;
+    margin-right: 10px;
+    box-sizing: border-box;
+    margin: 20px;
+    border: solid 3px black;
+  }
+  .bar {
+    width: 85%;
+    height: 100%;
+    padding: 10px;
+    margin: 20px;
+    box-sizing: border-box;
+    border: solid 3px black;
+    position: relative;
+    .username {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .post_number {
+      font-size: 1em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+    }
+  }
+}
+
+
