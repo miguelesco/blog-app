@@ -9,6 +9,7 @@
   justify-content:  space-between;
   box-sizing: border-box;
   padding: 10px;
+  margin-bottom: 20px;
   .photo {
     width: 200px;
     height: 100%;
@@ -41,5 +42,47 @@
     }
   }
 }
+#user_data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.bio {
+  width: 98%;
+  height: 200px;
+  border: solid 3px black;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-top: 20px;
+  .title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  &_text {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+}
+
+.post {
+  width: 98%;
+  height: 200px;
+  border: solid 3px black;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-top: 20px;
+  &_title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  &_text {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+}
+
 
 

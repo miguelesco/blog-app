@@ -1,2 +1,24 @@
-<h1>Here you can see all the info of the user</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<section id="user_data">
+  <%= render partial: "shared/userbar", locals: {
+    photo: @user.photo,
+    username: @user.name,
+    post_number: @user.posts_counter
+  } 
+  %>
+  <div class="bio">
+    <p class="title">bio</p>
+    <p class="bio_text"> <%= @user.bio %></p>
+  </div>
+
+  <div class="user_posts">
+    <p class="title">posts</p>
+    <% @user.posts.each do |post| %>
+      <%= render partial: "shared/postbar", locals: {
+        title: post.title,
+        text: post.text
+      } %>
+    <% end %>
+</section>
+
+
+

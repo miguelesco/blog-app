@@ -27,4 +27,77 @@ users = [
   },
 ]
 
-User.create(users.map { |user| user })
+
+usersDb = User.create(users)
+
+posts = [
+  {
+    author_id: usersDb[0].id,
+    title: 'Post 1',
+    text: 'Post text1',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+  {
+    author_id: usersDb[0].id,
+    title: 'Post 2',
+    text: 'Post text2',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+  {
+    author_id: usersDb[0].id,
+    title: 'Post 3',
+    text: 'Post text3',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+  {
+    author_id: usersDb[1].id,
+    title: 'Post 4',
+    text: 'Post text4',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+  {
+    author_id: usersDb[1].id,
+    title: 'Post 5',
+    text: 'Post text5',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+  {
+    author_id: usersDb[1].id,
+    title: 'Post 6',
+    text: 'Post text6',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+  {
+    author_id: usersDb[2].id,
+    title: 'Post 7',
+    text: 'Post text7',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+  {
+    author_id: usersDb[2].id,
+    title: 'Post 8',
+    text: 'Post text8',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+  {
+    author_id: usersDb[2].id,
+    title: 'Post 9',
+    text: 'Post text9',
+    comments_counter: 0,
+    likes_counter: 0,
+  },
+]
+
+# posts.each_with_index do |post, index|
+#   Post.create!(post.merge(user_id: usersDb[index]))
+# end
+
+Post.create(posts.map { |post| post })
