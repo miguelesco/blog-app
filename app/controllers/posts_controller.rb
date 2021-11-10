@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    new_post = Post.create(title: params[:post][:title], text: params[:post][:text], author_id: 1)
+    new_post = Post.create(title: params[:post][:title], text: params[:post][:text], author_id: self.current_user.id)
     respond_to do |format| 
       format.html do 
         if new_post.save
