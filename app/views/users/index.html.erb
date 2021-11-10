@@ -1,8 +1,10 @@
-<% @users.each do |user| %>
-  <%= render partial: "shared/userbar", locals: {
-    photo: user.photo,
-    username: user.name,
-    post_number: user.posts_counter
-  } 
-  %>
-<% end %>
+<section id="users">
+  <% @users.each do |user| %>
+    <%= render partial: "shared/userbar", locals: {
+      photo: user.photo,
+      username: user.name,
+      post_number: user.posts_counter
+    } 
+    %>
+  <% end %>
+</section>
