@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  def index;
-    @users =  User.all
+  def index
+    @users = User.all
   end
 
-  def show;
+  def show
     @user = User.find(params[:id])
     @posts = @user.tree_more_recent_posts
     p @posts
