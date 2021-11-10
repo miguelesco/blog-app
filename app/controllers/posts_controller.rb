@@ -3,10 +3,11 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @users = User.all
     @posts = @user.posts.order(created_at: :desc)
-    @posts.each do |post|
-      p post.more_recent_comments
-    end
   end
 
-  def show; end
+  def show; 
+    @user = User.find(params[:user_id])
+    @users = User.all
+    @post = @user.posts.find(params[:id])
+  end
 end
