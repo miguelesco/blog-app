@@ -96,8 +96,55 @@ posts = [
   },
 ]
 
-# posts.each_with_index do |post, index|
-#   Post.create!(post.merge(user_id: usersDb[index]))
-# end
+postsDb = Post.create(posts.map { |post| post })
 
-Post.create(posts.map { |post| post })
+comments = [
+  {
+    author_id: usersDb[0].id,
+    post_id: 1,
+    text: 'Comment 1',
+  },
+  {
+    author_id: usersDb[0].id,
+    post_id: 2,
+    text: 'Comment 2',
+  },
+  {
+    author_id: usersDb[0].id,
+    post_id: 3,
+    text: 'Comment 3',
+  },
+  {
+    author_id: usersDb[1].id,
+    post_id: 4,
+    text: 'Comment 1',
+  },
+  {
+    author_id: usersDb[1].id,
+    post_id: 5,
+    text: 'Comment 2',
+  },
+  {
+    author_id: usersDb[1].id,
+    post_id: 6,
+    text: 'Comment 3',
+  },
+  {
+    author_id: usersDb[2].id,
+    post_id: 7,
+    text: 'Comment 1',
+  },
+  {
+    author_id: usersDb[2].id,
+    post_id: 8,
+    text: 'Comment 2',
+  },
+  {
+    author_id: usersDb[2].id,
+    post_id: 9,
+    text: 'Comment 3',
+  },
+
+]
+
+Comment.create(comments)
