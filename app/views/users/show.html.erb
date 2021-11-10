@@ -11,7 +11,11 @@
     <p class="text"> <%= @user.bio %></p>
   </div>
 
-  <%=render partial: "shared/postbar", locals: {posts: @user.posts} %>
+  <%=render partial: "shared/postbar", locals: {posts: @user.posts, user_id: @user.id} %>
+
+  <div class="btn-container">
+    <%= link_to "See all posts", "/users/#{@user.id}/posts", class: "button" %>
+  </div>
 </section>
 
 
