@@ -1,5 +1,5 @@
-class Comment < AplicationRecord
-  belongs_to :user
+class Comment < ApplicationRecord
+  belongs_to :author, class_name: 'User'
   belongs_to :post
 
   def update_post_counter

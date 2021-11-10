@@ -1,2 +1,15 @@
-<h1>here you can watch and read the post</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<article class="post-container">
+    <div class="post-header">
+        <h3><%= @post.title %> by <%= @user.name %></h3>
+        <div class="comment-like-container">
+            <p>Comments: <%= @post.comments_counter %></p>
+            <p>Likes:  <%= @post.likes_counter %></p>
+        </div>
+    </div>
+    <p><%= @post.text %></p>
+</article>
+<article class="post-container">
+    <% @post.comments.each do |comment| %>
+        <p><%=@users.find(comment.author_id).name %>: <%= comment.text %></p>
+    <%end%>
+</article>
