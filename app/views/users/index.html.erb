@@ -3,7 +3,8 @@
     <%= render partial: "shared/userbar", locals: {
       photo: user.photo,
       username: user.name,
-      post_number: user.posts_counter
+      post_number: user.posts_counter,
+      id: user.id
     } 
     %>
   <% end %>
