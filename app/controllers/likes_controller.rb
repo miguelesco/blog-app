@@ -8,7 +8,7 @@ class LikesController < ApplicationController
       @like.update_post_likes
       redirect_to user_post_path(@user.id, @post)
     else
-      p " error"
+      p ' error'
     end
   end
 end
