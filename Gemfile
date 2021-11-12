@@ -4,15 +4,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
+gem 'bullet'
 gem 'font-awesome-rails'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'rails-controller-testing'
 gem 'rspec-rails', '>= 4.0.1'
-gem 'bullet'
-gem 'ruby-growl'
-gem  'xmpp4r'
-gem 'slack-notifier'
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'ruby-growl'
+gem 'slack-notifier'
+gem 'xmpp4r'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -56,7 +56,6 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
-  gem 'rspec-rails', '>= 4.0.1'
   gem 'shoulda', '~> 4.0'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
