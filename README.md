@@ -26,6 +26,17 @@ To get a local copy up and running follow these simple example steps.
 
 - cd into the directory
 
+- To run the app in your terminal run this command:
+  `rails s`
+
+- To run test first make sure the data is in the db: 
+  `bundle exec rake db:drop RAILS_ENV=test`
+  `bundle exec rake db:create RAILS_ENV=test`
+  `bundle exec rake db:schema:load RAILS_ENV=test`
+
+- If your sure you have the data in the db, you can run the test:
+  `bundle exec rspec || rspec`
+
 ## Authors
 
 👤 **Miguelangel Escorche**
