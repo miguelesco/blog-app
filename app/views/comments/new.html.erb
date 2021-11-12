@@ -1,0 +1,6 @@
+<div>
+  <%= form_for model: [@user, @post, @comment] do |form| %>
+    <%= form.text_area :text %>
+    <%= form.submit %>
+  <% end %>
+</div>

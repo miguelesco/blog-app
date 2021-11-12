@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: 'author_id'
   has_many :likes, foreign_key: 'author_id'
 
+  accepts_nested_attributes_for :comments, :likes
+
   def tree_more_recent_posts
     posts.order(created_at: :desc).limit(3)
   end
