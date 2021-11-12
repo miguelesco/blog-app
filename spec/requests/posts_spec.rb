@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
   describe 'GET /index' do
-    before { get '/users/:user_id/posts' }
+    before { get '/users/1/posts' }
     it 'returns http success' do
       expect(response).to have_http_status(200)
     end
@@ -11,13 +11,13 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to render_template('index')
     end
 
-    it 'display the text in the page' do
-      expect(response.body).to include('Here is a list of posts for a given user')
+    it 'render the partial shared/userbar in the page' do
+      expect(response).to render_template(partial: 'shared/_userbar')
     end
   end
 
   describe 'GET /show' do
-    before { get '/users/:user_id/posts/:id' }
+    before { get '/users/1/posts/3' }
     it 'returns http success' do
       expect(response).to have_http_status(200)
     end
@@ -26,8 +26,8 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to render_template('show')
     end
 
-    it 'display the text in the page' do
-      expect(response.body).to include('here you can watch and read the post')
+    it 'render the page show' do
+      expect(response).to render_template('show')
     end
   end
 end
