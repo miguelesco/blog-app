@@ -14,6 +14,8 @@ gem 'ruby-growl'
 gem 'slack-notifier'
 gem 'xmpp4r'
 gem 'devise'
+gem 'mailcatcher'
+gem 'dotenv-rails', groups: [:development, :test]
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
