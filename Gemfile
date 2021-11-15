@@ -13,6 +13,7 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'ruby-growl'
 gem 'slack-notifier'
 gem 'xmpp4r'
+gem 'devise'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
