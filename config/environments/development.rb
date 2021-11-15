@@ -32,7 +32,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     user_name:      ENV['MY_EMAIL'],
     password:       ENV['MY_PASSWORD'],
-    domain:         'localhost:3000',
+    domain:         'gmail.com',
     address:       'smtp.gmail.com',
     port:          '587',
     authentication: :plain,
