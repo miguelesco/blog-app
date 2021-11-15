@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '>= 2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'bullet'
@@ -16,6 +16,7 @@ gem 'xmpp4r'
 gem 'devise'
 gem 'mailcatcher'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
