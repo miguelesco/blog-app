@@ -1,17 +1,21 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '>= 2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'bullet'
+gem 'devise'
+gem 'dotenv-rails', groups: %i[development test]
 gem 'font-awesome-rails'
+gem 'mailcatcher'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'rails-controller-testing'
 gem 'rspec-rails', '>= 4.0.1'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'ruby-growl'
 gem 'slack-notifier'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'xmpp4r'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
