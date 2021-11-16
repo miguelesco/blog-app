@@ -8,11 +8,13 @@ class Ability
 
     can :read, User
     can :read, Post
+    can :create, Post
 
     return unless user.present?
     can :manage, Like, user: user
     can :manage, Comment, user: user
     can :manage, Post, author_id: user.id
+    can :create, Post
 
     return unless user.is? :admin
 

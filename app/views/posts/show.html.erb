@@ -9,6 +9,9 @@
                   <i class="fa fa-thumbs-up"></i>
               <%end%>
             <% end %>
+            <% if can? :delete, @post %>
+              <%= button_to 'Delete', "/posts/#{@post.id}/delete", method: :delete %>
+            <% end %>
         </div>
     </div>
     <p><%= @post.text %></p>
