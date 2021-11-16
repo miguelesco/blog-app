@@ -19,6 +19,9 @@
 <article class="post-container">
     <% @post.comments.each do |comment| %>
         <p><%=@users.find(comment.author_id).name %>: <%= comment.text %></p>
+        <% if can? :delete, comment %>
+            <%= button_to 'Delete', user_post_comment_path(@user.id, @post.id, comment.id), method: :delete %>
+        <% end %>
     <%end%>
 </article>
 <%= render "shared/add_comment" %>

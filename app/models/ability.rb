@@ -11,8 +11,8 @@ class Ability
     can :create, Post
 
     return unless user.present?
-    can :manage, Like, user: user
-    can :manage, Comment, user: user
+    can :manage, Like, author_id: user.id
+    can :manage, Comment, author_id: user.id
     can :manage, Post, author_id: user.id
     can :create, Post
 
