@@ -15,4 +15,10 @@ class User < ApplicationRecord
   def tree_more_recent_posts
     posts.order(created_at: :desc).limit(3)
   end
+
+  Roles = [ :admin , :default ]
+
+  def is?( requested_role )
+    self.role == requested_role.to_s
+  end
 end

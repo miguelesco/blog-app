@@ -6,6 +6,5 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.tree_more_recent_posts
-    p @posts
   end
 end

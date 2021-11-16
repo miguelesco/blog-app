@@ -5,7 +5,8 @@
     id: @user.id
     } 
 %>
-<% @posts.each do |post| %>
+<%@posts.each do |post| %>
+  <% if can? :read, post %>
     <article class="post-container">
         <h3 class="title"><%= post.title %></h3>
         <p class="text"><%= post.text %></p>
@@ -19,4 +20,5 @@
             <p><%=@users.find(comment.author_id).name %> : <%= comment.text %></p>
         <%end%>
     </article>
+    <% end %>
 <%end%>
