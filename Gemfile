@@ -5,6 +5,7 @@ ruby '>= 2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'bullet'
+gem 'cancancan'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'font-awesome-rails'
@@ -17,7 +18,6 @@ gem 'ruby-growl'
 gem 'slack-notifier'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'xmpp4r'
-gem 'cancancan'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
