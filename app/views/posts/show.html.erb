@@ -4,9 +4,14 @@
         <div class="comment-like-container">
             <p>Comments: <%= @post.comments_counter %></p>
             <p>Likes:  <%= @post.likes_counter %></p>
-            <%= link_to user_post_likes_path(@user.id, @post), method: :post do  %>
-                <i class="fa fa-thumbs-up"></i>
-            <%end%>
+            <% if can? :create, Like %>
+              <%= link_to user_post_likes_path(@user.id, @post), method: :post do  %>
+                  <i class="fa fa-thumbs-up"></i>
+              <%end%>
+            <% end %>
+            <% if can? :delete, @post %>
+              <%= button_to 'Delete', "/posts/#{@post.id}/delete", method: :delete %>
+            <% end %>
         </div>
     </div>
     <p><%= @post.text %></p>
@@ -14,6 +19,9 @@
 <article class="post-container">
     <% @post.comments.each do |comment| %>
         <p><%=@users.find(comment.author_id).name %>: <%= comment.text %></p>
+        <% if can? :delete, comment %>
+            <%= button_to 'Delete', user_post_comment_path(@user.id, @post.id, comment.id), method: :delete %>
+        <% end %>
     <%end%>
 </article>
 <%= render "shared/add_comment" %>

@@ -14,6 +14,7 @@
     <p class="alert"><%= alert %></p>
     <% if user_signed_in?%>
       <%= button_to 'Sign Out', "/users/sign_out", method: :delete %>
+      <%= link_to 'Create new post', "/posts/new"%>
       <%= link_to 'Edit Account', "/users/edit" %>
     <% else %>
       <%= link_to 'Sign In', "/users/sign_in" %>

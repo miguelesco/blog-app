@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
   def create
-    @user = current_user
-    @comment = @user.comments.build(comment_params)
-    @comment.author_id = @user.id
-    @comment.post_id = params[:post_id]
+    @user = User.find(params[:user_id])
+    @comment = current_user.comments.create(text: comment_params[:text], post_id: params[:post_id])
+    p @comment
     if @comment.save
       flash.now[:notice] = 'Comment successfully saved'
       @comment.update_post_counter
@@ -15,5 +14,14 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:text)
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    author = params[:user_id]
+    post = @comment.post_id
+    @comment.delete
+    flash[:notice] = 'Comment successfully deleted'
+    redirect_to "/users/#{author}/posts/#{post}"
   end
 end
