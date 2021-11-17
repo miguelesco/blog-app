@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Hello world', type: :system do
-  before(:each) do
+RSpec.describe 'User', type: :system do
+  before(:all) do
     user = User.new(
       name:'joao', 
       photo:'somephoto', 
@@ -26,7 +26,7 @@ RSpec.describe 'Hello world', type: :system do
 
     it 'Shows the number of posts of the users.' do
       visit '/users'
-      expect(page).to have_css('.photo-container')
+      expect(page).to have_css('.posts_counter')
     end
 
     it 'Redirects me to the user profile page when I click its name' do
