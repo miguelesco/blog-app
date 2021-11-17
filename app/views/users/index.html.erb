@@ -1,4 +1,5 @@
 <section id="users">
+  <h1>All Users</h1>
   <% @users.each do |user| %>
     <%= render partial: "shared/userbar", locals: {
       photo: user.photo,
