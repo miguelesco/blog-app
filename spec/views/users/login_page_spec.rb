@@ -11,7 +11,7 @@ RSpec.describe 'User', type: :system do
     user.save!
   end
 
-  describe 'index page' do
+  describe 'Login page' do
     it 'Shows inputs for email and password' do
       visit '/users/sign_in'
       expect(page).to have_field('Email')
