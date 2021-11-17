@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    author = @comment.author_id
     author = params[:user_id]
     post = @comment.post_id
     @comment.delete

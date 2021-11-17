@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -11,6 +9,7 @@ class Ability
     can :create, Post
 
     return unless user.present?
+
     can :manage, Like, user: user
     can :manage, Comment, user: user
     can :manage, Post, author_id: user.id

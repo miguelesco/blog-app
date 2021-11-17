@@ -1,11 +1,11 @@
 RSpec.describe 'User', type: :system do
   before(:all) do
     user = User.new(
-      name:'Vitor', 
-      photo:'somephoto', 
-      bio:'somebio',
-      email:'something3@hotmail.com',
-      password:'123456',
+      name: 'Vitor',
+      photo: 'somephoto',
+      bio: 'somebio',
+      email: 'something3@hotmail.com',
+      password: '123456'
     )
     user.skip_confirmation!
     user.save!

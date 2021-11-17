@@ -3,19 +3,19 @@ require 'rails_helper'
 RSpec.describe 'User', type: :system do
   before(:all) do
     @user = User.new(
-      name:'joao', 
-      photo:'somephoto', 
-      bio:'somebio',
-      email:'something2@hotmail.com',
-      password:'123456',
+      name: 'joao',
+      photo: 'somephoto',
+      bio: 'somebio',
+      email: 'something2@hotmail.com',
+      password: '123456'
     )
     @user.skip_confirmation!
     @user.save!
     x = 0
-    while x < 3 do
+    while x < 3
       @user.posts.create(
-        title:"post #{x}",
-        text:"this is post's #{x} text"
+        title: "post #{x}",
+        text: "this is post's #{x} text"
       )
       x += 1
     end

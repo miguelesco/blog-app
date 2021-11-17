@@ -4,16 +4,16 @@ require 'database_cleaner/active_record'
 RSpec.describe 'Post', type: :system do
   before(:all) do
     @user = User.new(
-      name:'Pedrinho', 
-      photo:'somephoto', 
-      bio:'somebio',
-      email:'something5@hotmail.com',
-      password:'123456',
+      name: 'Pedrinho',
+      photo: 'somephoto',
+      bio: 'somebio',
+      email: 'something5@hotmail.com',
+      password: '123456'
     )
     @user.skip_confirmation!
     @user.save!
     x = 0
-    while x < 3 do
+    while x < 3
       @user.posts.create(
         title: "post #{x}",
         text: "this is post's #{x} text"

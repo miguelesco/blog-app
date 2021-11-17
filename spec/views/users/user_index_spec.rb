@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe 'User', type: :system do
   before(:all) do
     user = User.new(
-      name:'joao', 
-      photo:'somephoto', 
-      bio:'somebio',
-      email:'something@hotmail.com',
-      password:'123456',
+      name: 'joao',
+      photo: 'somephoto',
+      bio: 'somebio',
+      email: 'something@hotmail.com',
+      password: '123456'
     )
     user.skip_confirmation!
     user.save!

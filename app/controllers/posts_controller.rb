@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     redirect_to "/users/#{placeholder}/posts"
   end
 
-  private 
+  private
 
   def post_params
     params.require(:post).permit(:title, :text)
