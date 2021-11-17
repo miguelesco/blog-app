@@ -1,4 +1,6 @@
-RSpec.describe 'User', type: :system do
+require 'rails_helper'
+
+RSpec.describe 'User', type: :feature do
   before(:all) do
     user = User.new(
       name: 'Miguel',
@@ -16,6 +18,7 @@ RSpec.describe 'User', type: :system do
       visit '/users/sign_in'
       expect(page).to have_field('Email')
       expect(page).to have_field('Password')
+      expect(page).to have_button('Log in')
     end
 
     it 'Returns a detailed error when I click with no inputs' do
@@ -34,10 +37,10 @@ RSpec.describe 'User', type: :system do
 
     it 'Logs me in and sends me to root if inputs are right' do
       visit '/users/sign_in'
-      fill_in 'Email', with: 'something3@hotmail.com'
-      fill_in 'Password', with: '123456'
+      fill_in 'Email', with: 'test@gmail.com'
+      fill_in 'Password', with: '1234567'
       click_on 'Log in'
-      expect(page).to have_selector('h1', text: 'All Users')
+      expect(page).to have_selector('section', id: 'users')
     end
   end
 end
