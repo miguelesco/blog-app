@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   get '/posts', to: 'posts#json'
   get '/posts/:id/comments', to: 'comments#json'
-  post '/posts/:id/comments/create', to: 'comments#json_create'
+  post '/posts/:id/comments/create_json', to: 'comments#json_create'
   resources :users, only: [:index, :show, :generate_jwt] do
     resources :posts, only: [:index, :show] do
       resources :comments, only: [:create, :destroy] 

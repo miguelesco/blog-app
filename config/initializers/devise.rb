@@ -26,7 +26,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = ENV['MY_EMAIL']
   config.scoped_views = true
-
+  config.navigational_formats = [:json]
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
