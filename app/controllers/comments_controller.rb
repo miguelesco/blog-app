@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   def json_create
     @post = Post.find(params[:id])
-    @comment = @post.comments.create(text:params[:text], author_id:current_user.id)
+    @comment = @post.comments.create(text: params[:text], author_id: current_user.id)
   end
 
   def comment_params

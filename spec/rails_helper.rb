@@ -50,8 +50,6 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :feature) do
-    # :rack_test driver's Rack app under test shares database connection
-    # with the specs, so continue to use transaction strategy for speed.
     driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
 
     unless driver_shares_db_connection_with_specs
@@ -105,7 +103,6 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
-
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

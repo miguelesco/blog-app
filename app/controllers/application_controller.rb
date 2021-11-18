@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   include Response
   include ExceptionHandler
-  
+
   respond_to :json
   protect_from_forgery with: :null_session
 
@@ -23,25 +23,22 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :bio, :photo, :password, :current_password)
     end
   end
-  
+
   def authenticate_user
-    if request.headers['Authorization'].present?
-      authenticate_or_request_with_http_token do |token|
-        p token
-        begin
-          jwt_payload = JWT.decode(token, Rails.application.secrets.secret_key_base).first
-          p token
-          @current_user_id = jwt_payload['id']
-        rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
-          p token
-          head :unauthorized
-        end
+  return unless request.headers['Authorization'].present?
+    authenticate_or_request_with_http_token do |token|
+      begin
+        jwt_payload = JWT.decode(token, Rails.application.secrets.secret_key_base).first
+        @current_user_id = jwt_payload['id']
+      rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
+        head :unauthorized
       end
     end
   end
 
-  private 
-  def authenticate_user!(options = {})
+  private
+
+  def authenticate_user!(_options = {})
     head :unauthorized unless signed_in?
   end
 

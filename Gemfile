@@ -9,6 +9,7 @@ gem 'cancancan'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'font-awesome-rails'
+gem 'jwt'
 gem 'mailcatcher'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'rails-controller-testing'
@@ -18,7 +19,6 @@ gem 'ruby-growl'
 gem 'slack-notifier'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'xmpp4r'
-gem 'jwt'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -56,8 +56,8 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'database_cleaner'
   gem 'spring'
-  gem "database_cleaner"
 end
 
 group :test do
