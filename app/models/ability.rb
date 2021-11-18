@@ -7,6 +7,7 @@ class Ability
     can :read, User
     can :read, Post
     can :manage, Post
+    can :create, Post
 
     return unless user.present?
 
@@ -14,6 +15,7 @@ class Ability
     can :manage, Comment, author_id: user.id
     can :manage, Post, author_id: user.id
     can :create, Post
+    can :create, Comment
 
     return unless user.is? :admin
 

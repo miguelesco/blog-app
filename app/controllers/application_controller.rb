@@ -3,14 +3,12 @@ class ApplicationController < ActionController::Base
   include Response
   include ExceptionHandler
   
-
   respond_to :json
   protect_from_forgery with: :null_session
 
+  skip_before_action :verify_authenticity_token
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user
-  before_action :underscore_params!
-
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: exception.message
@@ -25,7 +23,7 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :bio, :photo, :password, :current_password)
     end
   end
-
+  
   def authenticate_user
     if request.headers['Authorization'].present?
       authenticate_or_request_with_http_token do |token|
