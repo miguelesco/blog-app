@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :bio, :photo, :password, :current_password)
     end
   end
-
+  
   def authenticate_user
     if request.headers['Authorization'].present?
       authenticate_or_request_with_http_token do |token|

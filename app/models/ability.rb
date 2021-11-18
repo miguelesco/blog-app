@@ -7,6 +7,7 @@ class Ability
     can :read, User
     can :read, Post
     can :manage, Post
+    can :create, Post
 
     return unless user.present?
 
