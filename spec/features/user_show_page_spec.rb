@@ -2,8 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'User', type: :feature do
   before(:all) do
-    @user = User.all
-    @user = @user.first
+    @user = User.new(
+      name: 'joao',
+      photo: 'somephoto',
+      bio: 'somebio',
+      email: 'something2@hotmail.com',
+      password: '123456'
+    )
+    @user.skip_confirmation!
+    @user.save!
     x = 0
     while x < 3
       @user.posts.create(
@@ -32,7 +39,7 @@ RSpec.describe 'User', type: :feature do
 
     it 'Redirects me to the user profile page when I click its name' do
       visit "/users/#{@user.id}"
-      click_on 'Miguel'
+      click_on 'joao'
       expect(page).to have_css('.bio-container')
     end
 

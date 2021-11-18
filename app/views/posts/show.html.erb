@@ -1,27 +1,24 @@
 <article class="post-container">
     <div class="post-header">
-        <h3><%= @post.title %> by <%= @user.name %></h3>
+        <h3 class="title-author"><%= @post.title %> by <%= @user.name %></h3>
         <div class="comment-like-container">
-            <p>Comments: <%= @post.comments_counter %></p>
-            <p>Likes:  <%= @post.likes_counter %></p>
+            <p class="comments-counter">Comments: <%= @post.comments_counter %></p>
+            <p class="likes-counter">Likes:  <%= @post.likes_counter %></p>
             <% if can? :create, Like %>
-              <%= link_to user_post_likes_path(@user.id, @post), method: :post do  %>
-                  <i class="fa fa-thumbs-up"></i>
-              <%end%>
+                <%= link_to user_post_likes_path(@user.id, @post), method: :post do  %>
+                    <i class="fa fa-thumbs-up"></i>
+                <%end%>
             <% end %>
             <% if can? :delete, @post %>
               <%= button_to 'Delete', "/posts/#{@post.id}/delete", method: :delete %>
             <% end %>
         </div>
     </div>
-    <p><%= @post.text %></p>
+    <p class="text"><%= @post.text %></p>
 </article>
-<article class="post-container">
+<article class="post-container comments-container">
     <% @post.comments.each do |comment| %>
         <p><%=@users.find(comment.author_id).name %>: <%= comment.text %></p>
-        <% if can? :delete, comment %>
-            <%= button_to 'Delete', user_post_comment_path(@user.id, @post.id, comment.id), method: :delete %>
-        <% end %>
     <%end%>
 </article>
 <%= render "shared/add_comment" %>
