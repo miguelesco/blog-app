@@ -12,6 +12,22 @@ class CommentsController < ApplicationController
     end
   end
 
+  def json
+    @comments = Post.find(params[:id]).comments
+
+    json_response(@comments)
+  end
+
+  def json_create
+    comment = Post.find(params[:id]).comments.create(text:params[:text], author_id:params[:user])
+    if comment.save
+      json_response({
+        success: 'Comment successfully created'
+      })
+    end
+    p comment
+  end
+
   def comment_params
     params.require(:comment).permit(:text)
   end

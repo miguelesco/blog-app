@@ -18,6 +18,7 @@ gem 'ruby-growl'
 gem 'slack-notifier'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'xmpp4r'
+gem 'jwt'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
