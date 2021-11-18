@@ -14,6 +14,7 @@ class Ability
     can :manage, Comment, author_id: user.id
     can :manage, Post, author_id: user.id
     can :create, Post
+    can :create, Comment
 
     return unless user.is? :admin
 

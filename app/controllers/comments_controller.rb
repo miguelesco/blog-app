@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @user = User.find(params[:user_id])
     @comment = current_user.comments.create(text: comment_params[:text], post_id: params[:post_id])
@@ -19,13 +21,8 @@ class CommentsController < ApplicationController
   end
 
   def json_create
-    comment = Post.find(params[:id]).comments.create(text:params[:text], author_id:params[:user])
-    if comment.save
-      json_response({
-        success: 'Comment successfully created'
-      })
-    end
-    p comment
+    @post = Post.find(params[:id])
+    @comment = @post.comments.create(text:params[:text], author_id:current_user.id)
   end
 
   def comment_params
