@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   root 'users#index'
-  devise_for :users
+  scope :api, defaults: { format: :json } do
+    devise_for :users, controllers: { sessions: :sessions },
+                      path_names: { sign_in: :login }
+  end
   get '/posts', to: 'posts#json'
   get '/posts/:id/comments', to: 'comments#json'
   post '/posts/:id/comments/create', to: 'comments#json_create'
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :generate_jwt] do
     resources :posts, only: [:index, :show] do
       resources :comments, only: [:create, :destroy] 
       resources :likes, only: [:create]

@@ -343,6 +343,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 3.26)
   database_cleaner
+  database_cleaner-active_record
   devise
   dotenv-rails
   font-awesome-rails
