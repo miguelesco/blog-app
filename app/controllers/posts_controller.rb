@@ -7,6 +7,11 @@ class PostsController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
   end
 
+  def json
+    @all_posts = Post.all
+    json_response(@all_posts)
+  end
+
   def show
     @user = User.find(params[:user_id])
     @users = User.all
