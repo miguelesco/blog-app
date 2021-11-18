@@ -6,6 +6,7 @@ ruby '>= 2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'bullet'
 gem 'cancancan'
+gem 'database_cleaner-active_record'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'font-awesome-rails'

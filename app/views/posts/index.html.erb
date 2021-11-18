@@ -8,11 +8,11 @@
 <%@posts.each do |post| %>
   <% if can? :read, post %>
     <article class="post-container">
-        <h3 class="title"><%= post.title %></h3>
+        <h3 class="title"><%= link_to "#{post.title}", "/users/#{@user.id}/posts/#{post.id}" %></h3>
         <p class="text"><%= post.text %></p>
         <div class="comment-like-container">
-            <p>Comments: <%= post.comments_counter %></p>
-            <p>Likes:  <%= post.likes_counter %></p>
+            <p class="comments">Comments: <%= post.comments_counter %></p>
+            <p class="likes">Likes:  <%= post.likes_counter %></p>
         </div>
     </article>
     <article class="post-container">
