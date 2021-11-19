@@ -9,10 +9,12 @@ gem 'cancancan'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'font-awesome-rails'
+gem 'jwt'
 gem 'mailcatcher'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'rails-controller-testing'
 gem 'rspec-rails', '>= 4.0.1'
+gem 'rswag'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'ruby-growl'
 gem 'slack-notifier'
@@ -44,6 +46,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner-active_record'
 end
 
 group :development do
@@ -54,6 +57,7 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'database_cleaner'
   gem 'spring'
 end
 

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
   validates :name, presence: true
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
@@ -14,6 +14,12 @@ class User < ApplicationRecord
 
   def tree_more_recent_posts
     posts.order(created_at: :desc).limit(3)
+  end
+
+  def generate_jwt
+    JWT.encode({ id: id,
+                 exp: 60.days.from_now.to_i },
+               Rails.application.secrets.secret_key_base)
   end
 
   ROLES = %i[admin default].freeze

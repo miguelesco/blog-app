@@ -1,0 +1,104 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/posts/{id}/comments":
+    get:
+      summary: Get the comments
+      tags:
+      - Comments
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - bearerAuth: {}
+      responses:
+        '200':
+          description: See all comments
+        '401':
+          description: No authorization code.
+        '404':
+          description: No post found with this :id
+  "/posts/{id}/comments/create_json":
+    post:
+      summary: Create a comment
+      tags:
+      - create comment
+      security:
+      - bearerAuth: {}
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Create the comment
+        '401':
+          description: No authorization code.
+        '404':
+          description: No post found with this :id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+              required:
+              - text
+  "/posts":
+    get:
+      summary: Get the posts
+      tags:
+      - Post
+      security:
+      - bearerAuth: {}
+      responses:
+        '200':
+          description: See all posts
+        '404':
+          description: No authorization code.
+  "/api/users/login":
+    post:
+      summary: login user
+      tags:
+      - Login
+      parameters: []
+      responses:
+        '200':
+          description: User logged
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  email:
+                    type: string
+                  password:
+                    type: string
+              required:
+              - email
+              - password
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000
