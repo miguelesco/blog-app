@@ -15,21 +15,22 @@ RSpec.configure do |config|
   # document below. You can override this behavior by adding a swagger_doc tag to the
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
-    'v1/swagger.yaml' => {
+    'v1/swagger.json' => {
       openapi: '3.0.1',
       info: {
         title: 'API V1',
         version: 'v1'
       },
       paths: {},
-      securityDefinitions: {
-        Bearer: {
-          description: '...',
-          type: :apiKey,
-          name: 'Authorization',
-          in: :header
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: :http,
+            scheme: :bearer,
+            bearerFormat: JWT
+          }
         }
-      },    
+      },
       servers: [
         {
           url: 'https://{defaultHost}',

@@ -1,35 +1,60 @@
 require 'swagger_helper'
 
 RSpec.describe 'Posts', type: :request do
-  let(:Authorization) { "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjQyNTI0NTAzfQ.HPD_554JtyCQgLxYGHTk_Gv9TbkN0cBID3rDivFX9os" }
+  before(:all) do
+    @user = User.new(  
+      name: 'Alejandro',
+      photo: 'somephoto',
+      bio: 'somebio',
+      email: 'test4@hotmail.com',
+      password: '123456'
+    )
+    @user.skip_confirmation!
+    @user.save!
+    x = 0
+    while x < 3
+      @user.posts.create(
+        title: "post #{x}",
+        text: "this is post's #{x} text"
+      )
+      x += 1
+    end
+  end
+
+  path '/api/users/login' do
+    post 'login user' do
+      tags 'Login'
+      consumes 'application/json'
+      parameter name: :user, in: :body, schema: {
+        type: :object,
+        properties: {
+          user: {
+            email: { type: :string },
+            password: { type: :string }
+          }
+        },
+        required: [ 'email', 'password' ]
+      }
+      let(:user) { { user: {email: @user.email, password: @user.password} } }
+    end
+  end
+
   path '/posts' do
 
     get 'Get the posts' do
       tags 'Post'
       produces 'application/json'
-      security [Bearer: {}]
-      parameter name: :Authorization, in: :header, type: :string, description: 'Authorization token'
+      security [ bearerAuth: {} ]
 
-      response '200', 'See al posts' do
-        schema type: :object,
-        properties: {
-          id: { type: :integer },
-          author_id: { type: :integer },
-          title: { type: :string },
-          text: { type: :string },
-          comments_counter: { type: :integer },
-          likes_counter: { type: :integer },
-          created_at: { type: :string },
-          updated_at: { type: :string }
-        },
+      response '200', 'See all posts' do
+        let(:Authorization) { "Bearer #{:user_token["token"]}" }
         run_test!
       end
 
-      response '422', 'invalid request' do
-        let(:posts) { { title: 'foo' } }
+      response '404', 'No authorization code.' do
+        let(:Authorization) { "" }
         run_test!
       end
     end
   end
-
 end
