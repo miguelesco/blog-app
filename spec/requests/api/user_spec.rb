@@ -12,6 +12,14 @@ RSpec.describe 'api/user', type: :request do
     )
     user.skip_confirmation!
     user.save!
+    x = 0
+    while x < 3
+      user.posts.create(
+        title: "post #{x}",
+        text: "this is post's #{x} text"
+      )
+      x += 1
+    end
   end
 
   path '/api/users/login' do
