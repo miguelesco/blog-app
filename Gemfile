@@ -14,12 +14,12 @@ gem 'mailcatcher'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'rails-controller-testing'
 gem 'rspec-rails', '>= 4.0.1'
+gem 'rswag'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'ruby-growl'
 gem 'slack-notifier'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'xmpp4r'
-gem 'rswag'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server

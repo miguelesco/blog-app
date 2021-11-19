@@ -1,9 +1,8 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/user', type: :request do
-
   before(:all) do
-    user = User.new(  
+    user = User.new(
       name: 'Alejandro',
       photo: 'somephoto',
       bio: 'somebio',
@@ -23,7 +22,6 @@ RSpec.describe 'api/user', type: :request do
   end
 
   path '/api/users/login' do
-
     post 'login user' do
       tags 'Login'
       consumes 'application/json'
@@ -35,20 +33,18 @@ RSpec.describe 'api/user', type: :request do
             password: { type: :string }
           }
         },
-        required: [ 'email', 'password' ]
+        required: %w[email password]
       }
 
       response '200', 'User logged' do
-        let(:user) { { user: {email: 'test3@hotmail.com', password: '123456'} } }
+        let(:user) { { user: { email: 'test3@hotmail.com', password: '123456' } } }
         run_test!
       end
 
       response '422', 'invalid request' do
-        let(:user) { { user: {email: 'testsas@hotmail.com', password: '12345678'} } }
+        let(:user) { { user: { email: 'testsas@hotmail.com', password: '12345678' } } }
         run_test!
       end
     end
   end
-
-
 end

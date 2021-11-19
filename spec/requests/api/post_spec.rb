@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'Posts', type: :request do
   before(:all) do
-    @user = User.new(  
+    @user = User.new(
       name: 'Alejandro',
       photo: 'somephoto',
       bio: 'somebio',
@@ -23,11 +23,10 @@ RSpec.describe 'Posts', type: :request do
   end
 
   path '/posts' do
-
     get 'Get the posts' do
       tags 'Post'
       produces 'application/json'
-      security [ bearerAuth: {} ]
+      security [bearerAuth: {}]
 
       response '200', 'See all posts' do
         let(:Authorization) { "Bearer #{@token}" }
@@ -35,7 +34,7 @@ RSpec.describe 'Posts', type: :request do
       end
 
       response '404', 'No authorization code.' do
-        let(:Authorization) { "" }
+        let(:Authorization) { '' }
         run_test!
       end
     end
