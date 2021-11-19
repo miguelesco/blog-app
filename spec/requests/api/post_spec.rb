@@ -11,6 +11,7 @@ RSpec.describe 'Posts', type: :request do
     )
     @user.skip_confirmation!
     @user.save!
+    @token = @user.generate_jwt
     x = 0
     while x < 3
       @user.posts.create(
@@ -18,24 +19,6 @@ RSpec.describe 'Posts', type: :request do
         text: "this is post's #{x} text"
       )
       x += 1
-    end
-  end
-
-  path '/api/users/login' do
-    post 'login user' do
-      tags 'Login'
-      consumes 'application/json'
-      parameter name: :user, in: :body, schema: {
-        type: :object,
-        properties: {
-          user: {
-            email: { type: :string },
-            password: { type: :string }
-          }
-        },
-        required: [ 'email', 'password' ]
-      }
-      let(:user) { { user: {email: @user.email, password: @user.password} } }
     end
   end
 
@@ -47,7 +30,7 @@ RSpec.describe 'Posts', type: :request do
       security [ bearerAuth: {} ]
 
       response '200', 'See all posts' do
-        let(:Authorization) { "Bearer #{:user_token["token"]}" }
+        let(:Authorization) { "Bearer #{@token}" }
         run_test!
       end
 
